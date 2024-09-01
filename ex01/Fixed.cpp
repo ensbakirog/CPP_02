@@ -11,28 +11,12 @@ Fixed::Fixed( const Fixed& obj ) {
 	*this = obj;
 }
 
-Fixed::Fixed(const int raw) {
-	this->_fixedPointValue = raw << this->_fractionalBits;
-}
-
-Fixed::Fixed(const float raw) {
-	this->_fixedPointValue = roundf(raw * (1 << this->_fractionalBits));
-}
-
 Fixed& Fixed::operator=( const Fixed& obj ) {
 	std::cout << "Copy assignment operator called" << std::endl;
 
 	if (this != &obj)
 		this->_fixedPointValue = obj.getRawBits();
 	return *this;
-}
-
-int Fixed::toInt( void ) const {
-	return (this->_fixedPointValue >> this->_fractionalBits;
-}
-
-float Fixed::toFloat( void ) const {
-	return this->_fixedPointValue / (1 << this->_fractionalBits);
 }
 
 Fixed::~Fixed() {
